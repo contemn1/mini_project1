@@ -9,13 +9,12 @@ def func_s(d):
 
 def prob_density(d):
     def density_under_sigma(sigma):
-        first = (func_s(d) / (np.sqrt(d) * sigma))
-        second = np.power(d / 2*np.pi*np.e, d/2)
+        first = (func_s(d) / (np.sqrt(2 * np.pi) * sigma))
+        second = np.power((d-1) / 2*np.pi*np.e, (d-1)/2)
         return first * second
     return density_under_sigma
 
-
-if __name__ == '__main__':
+def plot():
     x = np.arange(0.1, 1, 0.01)
     plt.figure(1)
     d_range = [1, 2, 5, 10, 20]
@@ -28,3 +27,6 @@ if __name__ == '__main__':
     plt.tight_layout(pad=0.4, w_pad=0.5, h_pad=1.0)
 
     plt.show()
+
+if __name__ == '__main__':
+    plot()
